@@ -1,0 +1,25 @@
+{% extends 'introduction.html' %}
+
+{% load static %}
+
+{% block introduction%}
+    <form method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="login-header">
+            <img src="{% static 'images/logo.jpg'%}" alt="">
+            <h1 style="text-align: center;">Welcome!</h1>
+        </div>
+        {% if form.non_field_errors %}
+        <div style="color: red">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %}
+        {{ form.username }}
+        {% if form.username.errors%}
+            <p style="color: rgb(223, 89, 89)">{{ form.username.errrors }}</p>
+        {% endif %}
+        
+        {{form.password }}
+        <button type="submit">Login</button>
+    </form>
+{% endblock introduction %}

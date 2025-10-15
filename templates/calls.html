@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block base_content %}
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: 14rem auto 3rem;
+}
+</style>
+   <div class="call-page">
+       <div class="search-add">
+        <form action="">
+            <input type="text" placeholder="Search for calls here">
+            <button type="submit">Search</button>
+        </form>
+        {% if user.is_staff %}
+            <div class="actions">
+                <a href="">Add call</a>
+                <a class="update" href="{% url 'add_update' %}">Add update</a>
+            </div>
+        {% endif %}
+       </div>
+
+       {% block update_content %}
+       {% endblock update_content %}
+
+       <main>
+        <div class="recent-calls">
+            <h2>Recent calls</h2>
+    
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price of an acre</th>
+                        <th>Investment rate</th>
+                        <th>Crop(s) cultivated</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for call in object_list %}
+                        <tr>
+                            <td>{{ call.name }}</td>
+                            <td><span><i class="fa-solid fa-cedi-sign"></i></span>{{ call.price_of_acre}}</td>
+                            <td>{{ call.rate}} %</td>
+                            <td>{{ call.crops }}</td>
+                            {% if user.is_staff %}
+                                <td class="primary">Add an update</td>
+                            {% else %}
+                                <td class="primary">Invest in call</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+       </main>
+       
+   </div>
+{% endblock base_content %}

@@ -1,0 +1,612 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+:root {
+    --color-primary: #7380ec;
+    --color-danger: #ff7782;
+    --color-success: #41f1b6;
+    --color-warning: #ffbb55;
+    --color-white: #fff;
+    --color-info-dark: #7d8da1;
+    --color-dark: #363949;
+    --color-light: rgba(132, 139, 200, 0.18);
+    --color-primary-variant: #111e88;
+    --color-dark-variant: #677483;
+    --color-background: #f6f6f9;
+
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1: 1.2rem;
+
+    --box-shadow: 0 2rem 3rem var(--color-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: 0;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: poppins, sans-serif;
+    font-size: 0.88rem;
+    background: var(--color-background);
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-dark);
+}
+
+
+a {
+    color: var(--color-dark);
+}
+
+img {
+    display: block;
+    width: 100%;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-size: 0.87rem;
+}
+
+
+h4 {
+    font-size: 0.8rem;
+}
+
+h5 {
+    font-size: 0.77rem;
+}
+
+small {
+    font-size: 0.75rem;
+}
+
+.primary {
+    color: var(--color-primary);
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 14rem auto 23rem;
+    gap: 1.8rem;
+    margin: 0 auto;
+    width: 100%;
+    height: 100vh;
+}
+
+aside .logo {
+    padding: 20px;
+}
+
+aside .logo h2 {
+    color: rgb(205, 205, 141);
+}
+
+aside .logo h2 > span {
+    color:#86dbbf;
+}
+
+aside {
+    height: 100vh;
+    background: #363949;
+}
+
+aside .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+h3 {
+    font-size: 0.87rem;
+}
+
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    top: 3rem;
+}
+
+.sidebar a {
+    display: flex;
+    color: var(--color-info-dark);
+    margin-left: 2rem;
+    gap: 1rem;
+    height: 4.7rem;
+    align-items: center;
+    position: relative;
+}
+
+.sidebar a:hover {
+    color: var(--color-primary);
+}
+
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+    transition: all 300ms ease;
+} 
+.sidebar a > span {
+    font-size: 20px;
+}
+
+.sidebar a:last-child {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+
+main {
+    margin-top: 1.4rem;
+}
+
+main .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+
+.head {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.4rem;
+}
+
+main .cards > div span {
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.6rem;
+    border-radius: 50%;
+    font-size: 2rem;
+}
+
+.cards div span > i {
+    padding: 6px;
+}
+main .cards > div {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+    display: flex;
+    justify-content: space-between;
+}
+
+main .cards > div:hover {
+    box-shadow: none;
+}
+main .cards  div.calls  > span {
+    background: var(--color-success);
+}
+
+main .cards > div.investors span {
+    background: rgb(48, 136, 219);
+}
+
+.recent-calls {
+    margin-top: 3.4rem;
+}
+
+.recent-calls > table {
+    background: var(--color-white);
+    width: 100%;
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+main table tbody td {
+    height: 2.8rem;
+    border-bottom: 1px solid var(--color-light);
+    color: var(--color-dark-variant);
+}
+
+main table {
+    margin-top: 1.2rem;
+}
+
+main a {
+    text-align: center;
+}
+
+main table:hover {
+    box-shadow: none;
+}
+
+.sides {
+    margin-top: 1.4rem;
+}
+
+.updates {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+    transition: all 300ms ease;
+}
+
+.updates > p {
+    height: 3.7rem;
+}
+
+main a {
+    text-align: center;
+    display: block;
+    margin: 1rem auto;
+    color: var(--color-primary);
+}
+
+.updates:hover {
+    box-shadow: none;
+}
+
+
+.login-container {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    width: 100%;
+    margin: 0 auto;
+    height: 100vh;
+    background-color: var(--color-white);
+}
+
+.form-view form {
+    margin: 30% auto auto;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+.form-view form > input {
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(224, 222, 222);
+}
+
+.form-view form > button {
+    padding: 10px;
+    background-color: #472312;
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.form-view > button:hover {
+    background-color: #924825;
+}
+
+.image-view {
+    background: blue;
+}
+
+.image-view > img {
+    width: 100%;       
+  height: 100vh;      
+  object-fit: cover;
+}
+
+.login-header {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 20px;
+}
+
+.login-header img {
+    width:100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.call-page {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.search-add {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-add > form {
+    width: 90%;
+}
+
+.search-add > form > input[type="text"] {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(224, 222, 222);
+    width: 45%;
+}
+
+.search-add form button {
+    background-color: var(--color-primary);
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.call-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.call-card {
+    background: var(--color-white);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    margin-top: 1rem;
+    box-shadow: var(--box-shadow);
+}
+
+.call-card > img {
+    width: 100%;
+    height: 300px;
+}
+
+.call-card > p {
+    padding: 10px;
+}
+
+.actions {
+    width: 20%;
+}
+
+.actions > a {
+    margin-right: 10px;
+    background-color:rgb(48, 136, 219);
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+.actions > a.update {
+    background-color: rgb(135, 225, 135);
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 500ms;
+    opacity: 1;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.overlay-delete {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.3);
+    transition: opacity 500ms;
+    opacity: 1;
+}
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.dropdown > select{
+    padding: 10px;
+    border: 1px solid rgb(165, 163, 163);
+}
+
+.blog-textarea {
+    width: 100%;
+    height: 300px;
+    padding: 15px;
+    font-size: 16px;
+    line-height: 1.6;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: vertical; 
+  }
+
+.blog-textarea:focus {
+outline: none;
+border-color: #3498db;
+box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+.update-subject {
+    margin-bottom: 20px;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgb(224, 222, 222);
+}
+
+.verification-button {
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+}
+
+.investment-btn {
+    background-color: #3498db;
+    padding: 10px;
+    color: white;
+}
+
+.investment-form input{
+    margin-top: 15px;
+    width: 300px;
+    border-radius: 10px;
+    border: 1px solid rgb(224, 222, 222);
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.right {
+    margin-top: 1.4rem;
+}
+
+.right .top {
+    display: flex;
+    justify-content: end;
+    gap: 2rem;
+}
+
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 94%;
+        grid-template-columns: 7rem auto 23rem;
+    }
+
+    aside {
+        background-color: var(--color-background);
+    }
+
+    aside .sidebar h3 {
+        display: none;
+    }
+
+    aside .sidebar a {
+        width: 5.6rem;
+    }
+
+    aside .sidebar a:last-child {
+        position: relative;
+        margin-top: 1.8rem;
+    }
+
+    main .cards {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    main .recent-calls {
+        width: 94%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 2rem 0 0 8.8rem;
+    }
+
+    main .recent-calls table {
+        width: 83vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+
+    aside {
+        position: fixed;
+        left: 0;
+        background: #363949;
+        width: 18rem;
+        z-index: 3;
+        box-shadow: 1rem 3rem 4rem var(--color-light);
+        height: 100vh;
+        padding-right: var(--card-padding);
+        display: none;
+    }
+
+    aside .logo {
+        margin-left: 1rem;
+    }
+
+    aside .sidebar h3 {
+        display: inline;
+    }
+
+    .close-button {
+        display: inline-block;
+        cursor: pointer;
+        color: white;
+    }
+
+    main {
+        margin-top: 8rem;
+        padding: 0 1rem;
+    }
+
+    main .recent-calls {
+        position: relative;
+        margin: 3rem 0 0 0;
+        width: 100%;
+    }
+
+    main .recent-calls table {
+        width: 100%;
+        margin: 0;
+    }
+
+    .sides {
+        width: 94%;
+        margin: 0 auto 4rem;
+    }
+
+}

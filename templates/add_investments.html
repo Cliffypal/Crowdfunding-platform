@@ -1,0 +1,24 @@
+{% extends 'index_user.html' %}
+
+{% block update_content %}
+    <div id="popup1" class="overlay-delete">
+        <div class="popup">
+            <h2>Invest in a call</h2>
+            <a class="close" href="{% url 'user-home' %}">&times;</a>
+            <p>NB: Before you decide to invest please make sure you know all <br>the details of the call you are investing in</p>
+            <form method="POST" action="{% url 'add_investment' %}" class="investment-form">
+                {% csrf_token %} 
+                <input type="text" name="acre" placeholder="Enter the number of acres you want to sponsor">
+                <div class="dropdown" style="margin-bottom: 20px;">
+                    <label for="calls">Choose a call:</label>
+                    <select name="calls" id="calls">
+                        {% for call in calls %}
+                            <option value="{{ call.id }}">{{ call.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <button class="verification-button" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock update_content %}

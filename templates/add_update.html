@@ -1,0 +1,29 @@
+{% extends 'calls.html' %}
+{% load custom_filters %}
+
+{% block update_content %}
+    <div id="popup1" class="overlay-delete">
+        <div class="popup">
+            <h2>Add an update</h2>
+            <a class="close" href="{% url 'calls' %}">&times;</a>
+            <br>
+            <form class="update-form" action="{% url 'add_update' %}" method="POST">
+                {% csrf_token %}
+                <div class="dropdown">
+                    <label for="calls">Choose a call:</label>
+                    <select name="calls" id="calls">
+                        {% for call in calls %}
+                            <option value="{{ call.id }}">{{ call.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                {{ form.subject|add_class:"update-subject" }}
+                <div>
+                    <label for="report" class="report-label">Enter report here</label>
+                   {{ form.body|add_class:"blog-textarea"}}
+                </div>
+                <button type="submit">Done</button>
+            </form>
+        </div>
+    </div>
+{% endblock update_content %}

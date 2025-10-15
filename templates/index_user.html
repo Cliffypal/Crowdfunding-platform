@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+
+{% block base_content %}
+<main>
+    <h1>Hello, {{ username }}</h1>
+
+    <div class="cards">
+        <div class="investments">
+            <span><i class="fa-solid fa-sack-dollar"></i></span>
+            <div class="main-section">
+                <h3>Total sponsorship</h3>
+                <h1>
+                    <i class="fa-solid fa-cedi-sign"></i>
+                    {{ total_money }}
+                </h1>
+            </div>
+        </div>
+
+        <div class="calls">
+            <span><i class="fa-solid fa-seedling"></i></span>
+            <div class="main-section">
+                <h3>Total acres invested in</h3>
+                <h1>
+                    500 acres
+                </h1>
+            </div>
+        </div>
+        
+    </div>
+
+    {% block update_content %}
+    {% endblock update_content %}
+
+    <div class="recent-calls">
+        <div class="table-head" style="display: flex; justify-content: space-between">
+            <h2>Recent sponsorship</h2>
+            <a class="investment-btn" href="{% url 'add_investment' %}">Add investment</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Project/Call</th>
+                    <th>Amount invested</th>
+                    <th>Projected return on sponsorship</th>
+                    <th>Acre</th>
+                    <th>Call status</th>
+                    <th>Investment Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for investment in object_list %}
+                    <tr>
+                        <td>{{ investment.call }}</td>
+                        <td><span><i class="fa-solid fa-cedi-sign"></i></span>{{ investment.price }}</td>
+                        <td>{{ investment.call.rate }}%</td>
+                        <td>{{ investment.size }} acres</td>
+                        {% if investment.call.projected_end_date > current_date%}
+                           <td>Active</td>
+                        {% else %}
+                           <td>Inactive</td>
+                        {% endif %}
+                        <td>
+                            {% if not investment.is_verified %}
+                                <span style="color: var(--color-warning)">Not verified</span>
+                                <input type="hidden" name="investment_id" value="{{ investment.id }}">
+                            {% else %}
+                                <span class="primary">Verified</span>
+                            {% endif %}
+                        </td>
+
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="#">Show All</a>
+    </div>
+</main>
+
+<div class="sides">
+    <h2>Recent Updates</h2>
+    <div class="updates">
+        {% for update in updates %}
+            <p><a href="{% url 'update' update.id %}"><b>{{ update.call }}</b> - "{{update.subject}}"</a></p>
+        {% endfor %}
+    </div>
+</div>
+</div>
+{% endblock base_content %}

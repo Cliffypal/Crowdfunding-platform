@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block base_content %}
+
+<main>
+    <h1>Dashboard</h1>
+
+    <div class="cards">
+        <div class="investments">
+            <span><i class="fa-solid fa-sack-dollar"></i></span>
+            <div class="main-section">
+                <h3>Total sponsorships</h3>
+                <h1>
+                    <i class="fa-solid fa-cedi-sign"></i>
+                    {{ total_money}}
+                </h1>
+            </div>
+        </div>
+
+        <div class="calls">
+            <span><i class="fa-solid fa-seedling"></i></span>
+            <div class="main-section">
+                <h3>Total calls sold</h3>
+                <h1>
+                    500 acres
+                </h1>
+            </div>
+        </div>
+
+        <div class="investors">
+            <span><i class="fa-solid fa-handshake"></i></span>
+            <div class="main-section">
+                <h3>Total investors</h3>
+                <h1>
+                    {{ number_users }}
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="recent-calls">
+        <h2>Recent sponsorship </h2>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Sponsor name</th>
+                    <th>Project/Call</th>
+                    <th>Amount</th>
+                    <th>Acres invested in</th>
+                    <th>Projected return on sponsorship</th>
+                    <th>Call status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for investment in object_list %}
+                    <tr>
+                        <td>{{ investment.investor }}</td>
+                        <td>{{ investment.call }}</td>
+                        <td><span><i class="fa-solid fa-cedi-sign"></i></span>{{ investment.price }}</td>
+                        <td>{{ investment.size }} acres</td>
+                        <td>{{ investment.rate }}%</td>
+                        <td>{{ status }}</td>
+                        <td>
+                            {% if not investment.is_verified %}
+                                <form method="POST" action="{% url 'investors' %}">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="investment_id" value="{{ investment.id }}">
+                                    <button type="submit" style="cursor: pointer;" class="verification-button">Verify</button>
+                                </form>
+                            {% else %}
+                                <span class="primary">Verified</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'investors' %}">Show All</a>
+    </div>
+</main>
+
+<div class="right">
+    <div class="top">
+        <button id="menu-id">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+    </div>
+    <div class="sides">
+        <h2>Recent Updates</h2>
+        <div class="updates">
+            {% for update in updates %}
+                <p><a href="{% url 'update' update.id %}"><b>{{ update.call }}</b> - "{{update.subject}}"</a></p>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock base_content %}

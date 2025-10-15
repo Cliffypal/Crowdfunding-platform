@@ -1,0 +1,30 @@
+{% extends 'introduction.html' %}
+
+{% load static %}
+
+{% block introduction %}
+    <form method="POST" action="{% url 'investment_form' %}">
+        {% csrf_token %}
+        <div class="login-header">
+            <img src="{% static 'images/logo.jpg'%}" alt="">
+            <h1 style="text-align: center;">Welcome!</h1>
+        </div>
+        <!-- {% if form.non_field_errors %}
+        <div style="color: red">
+            {{ form.non_field_errors }}
+        </div>
+        {% endif %} -->
+        <input type="text" name="name" placeholder="Enter your name here(Your legal full name)" required>
+        <input type="text" name="acre" placeholder="Enter the number of acres you want to sponsor" required>
+        <input type="email" name="email" placeholder="Enter your email here" required>
+        <div class="dropdown" style="margin-bottom: 20px;">
+            <label for="calls">Choose a call:</label>
+            <select name="calls" id="calls">
+                {% for call in calls %}
+                    <option value="{{ call.id }}">{{ call.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+{% endblock introduction %}

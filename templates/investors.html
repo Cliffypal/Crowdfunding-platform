@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block base_content %}
+  <main>
+        <div class="recent-calls">
+            <h2>Recent calls</h2>
+    
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Call</th>
+                        <th>Amount</th>
+                        <th>Size of call</th>
+                        <th>Rate</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for investment in investments %}
+                        <tr>
+                            <td>{{ investment.investor }}</td>
+                            <td>{{ investment.call }}</td>
+                            <td><span><i class="fa-solid fa-cedi-sign"></i></span>{{ investment.price}}</td>
+                            <td>{{ investment.size }}</td>
+                            <td>{{ investment.rate }}%</td>
+                            <td>
+                                {% if not investment.is_verified %}
+                                    <form method="POST" action="{% url 'investors' %}">
+                                        {% csrf_token %}
+                                        <input type="hidden" name="investment_id" value="{{ investment.id }}">
+                                        <button type="submit" class="verification-button">Verify</button>
+                                    </form>
+                                {% else %}
+                                    <span class="primary">Verified</span>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+       </main>
+{% endblock base_content %}

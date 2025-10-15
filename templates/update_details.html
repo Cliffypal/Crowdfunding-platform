@@ -1,0 +1,19 @@
+{% extends 'index_user.html' %}
+
+{% block update_content %}
+    <div id="popup1" class="overlay-delete">
+        <div class="popup">
+            <h2>Update details</h2>
+            {% if not user.is_staff %}
+               <a class="close" href="{% url 'user-home' %}">&times;</a>
+            {% else %}
+                <a class="close" href="{% url 'admin-home' %}">&times;</a>
+            {%endif%}
+            <br>
+            <p><b>Call: </b>{{ update.call }}</p>
+            <br>
+            <h3>Report:</h3>
+            <p>{{update.body}}</p>
+        </div>
+    </div>
+{% endblock update_content%}

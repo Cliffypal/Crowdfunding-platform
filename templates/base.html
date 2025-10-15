@@ -1,0 +1,66 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <div class="top">
+                <div class="logo">
+                    <img src="{% static 'images/logo.jpg'%}" alt="" style="border-radius: 50%;">
+                </div>
+                <div class="close-button" id="close-btn">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+            </div>
+
+            {% if user.is_staff %}
+                <div class="sidebar">
+                    <a href="{%url 'admin-home' %}">
+                        <span><i class="fa-solid fa-house"></i></span>
+                        <h3>Home</h3>
+                    </a>
+                    <a href="{% url 'investors' %}">
+                        <span><i class="fa-regular fa-user"></i></span>
+                        <h3>Investors</h3>
+                    </a>
+                    <a href="{% url 'calls' %}">
+                        <span><i class="fa-solid fa-seedling"></i></span>
+                        <h3>Calls</h3>
+                    </a>
+                    <a href="{% url 'logout' %}">
+                        <span><i class="fa-solid fa-right-from-bracket"></i></span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+            {% else %}
+                <div class="sidebar">
+                    <a href="{% url 'user-home' %}">
+                        <span><i class="fa-solid fa-house"></i></span>
+                        <h3>Home</h3>
+                    </a>
+                    <a href="{% url 'calls' %}">
+                        <span><i class="fa-solid fa-seedling"></i></span>
+                        <h3>Calls</h3>
+                    </a>
+                    <a href="{% url 'logout' %}">
+                        <span><i class="fa-solid fa-right-from-bracket"></i></span>
+                        <h3>Logout</h3>
+                    </a>
+                </div>
+            {% endif %}
+        </aside>
+
+        {% block base_content %}
+        {% endblock base_content %}
+
+        
+</body>
+</html>
